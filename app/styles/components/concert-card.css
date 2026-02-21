@@ -1,0 +1,19 @@
+@layer components {
+  .concert-card {
+    .cover-image {
+      @apply rounded-[20px] overflow-clip aspect-4/5 object-cover;
+    }
+
+    .card-detail {
+      @apply text-center;
+    }
+
+    .title {
+      @apply text-2xl py-3 text-white;
+    }
+
+    .card-cta {
+      @apply inline-block;
+    }
+  }
+}

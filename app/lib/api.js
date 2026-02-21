@@ -9,7 +9,7 @@ export const isLoggedIn = () => {
   return !!token;
 }
 
-export default {
+const API = {
   async login(email, password) {
     const response = await fetch(`${baseURL}/auth/login`, {
       method: "POST",
@@ -50,7 +50,29 @@ export default {
 
   async getAllConcerts() {
     const response = await fetch(`${baseURL}/concert`);
+    const data = await response.json();
 
-    return await response.json();
+    return data;
+  },
+
+  async getConcert( concertId ) {
+    const concertResponse = await fetch(`${baseURL}/concert/${concertId}`);
+    const detail = await concertResponse.json();
+
+    const data = {
+      detail: detail,
+      availability: [],
+    };
+
+    if ( isLoggedIn() ) {
+      const seatsResponse = await fetch(`${baseURL}/ticket/concert/${concertId}`);
+      const availability = await seatsResponse.json();
+
+      data.availability = availability;
+    }
+
+    return data;
   }
 }
+
+export default API
