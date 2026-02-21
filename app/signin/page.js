@@ -45,7 +45,7 @@ export default function Page() {
     <Layout className="login-screen">
       <main>
         <div className="main-container">
-          <h1 className="text-5xl font-medium text-center mb-6">Sign in</h1>
+          <h1 className="page-title text-center">Sign in</h1>
           <div className="input-row">
             {error && (
               <p className="error-message">{error}</p>

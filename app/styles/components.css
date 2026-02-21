@@ -1,4 +1,12 @@
 @layer base {
+  .main-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .page-title {
+    @apply text-5xl font-medium mb-12;
+  }
+
   .input-row {
     @apply px-2 py-4;
   }
