@@ -1,0 +1,41 @@
+@layer components {
+  .input-label {
+    @apply mb-2;
+  }
+
+  .text-input {
+    --border-color: var(--color-black);
+
+    @apply border border-solid border-(--border-color) rounded w-full p-2;
+
+    &.dark {
+      --border-color: var(--color-gray-400);
+    }
+  }
+
+  .button {
+    --border-color: var(--color-gray-700);
+    --background-color: var(--color-gray-700);
+    --text-color: var(--color-white);
+
+    @apply text-center border border-solid border-(--border-color) rounded w-full bg-(--background-color) text-(--text-color) py-2 px-7 font-medium cursor-pointer;
+
+    &.outlined {
+      --background-color: transparent;
+      --border-color: var(--color-gray-700);
+      --text-color: var(--color-black);
+    }
+
+    &.dark {
+      --border-color: var(--color-gray-100);
+      --background-color: var(--color-gray-100);
+      --text-color: var(--color-black);
+
+      &.outlined {
+        --background-color: transparent;
+        --border-color: var(--color-gray-100);
+        --text-color: var(--color-white);
+      }
+    }
+  }
+}
