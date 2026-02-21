@@ -1,5 +1,17 @@
 @layer components {
   .concert-detail-screen {
+    .main-container {
+      @apply py-16 md:py-20;
+    }
+
+    .concert-title {
+      @apply text-5xl mb-8;
+    }
+
+    .concert-description {
+      @apply text-2xl mb-8;
+    }
+
     .seat-reserve {
       @apply flex flex-col-reverse md:flex-row gap-4 md:gap-8;
     }
@@ -9,7 +21,7 @@
     }
 
     .seat-list {
-      @apply grid grid-cols-20 gap-2;
+      @apply grid grid-cols-8 md:grid-cols-20 gap-2;
     }
 
     .seat-select {

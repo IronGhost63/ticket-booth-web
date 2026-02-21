@@ -67,7 +67,12 @@ export default function Page() {
     <Layout className="concert-detail-screen">
       <main>
         <div className="main-container">
-          <div className="concert-detail"></div>
+          <div className="concert-detail">
+            <h1 className="concert-title">{concertDetail.name}</h1>
+            {concertDetail.description && (
+              <div className="concert-description">{concertDetail.description}</div>
+            )}
+          </div>
           {userLoggedIn && (
             <div className="seat-reserve">
               <div className="seat-list-wrapper">
