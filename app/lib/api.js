@@ -78,9 +78,28 @@ const API = {
       data.availability = availability;
     }
 
-    console.log(data);
-
     return data;
+  },
+
+  async reserveTicket( concertId, seatNumber ) {
+    const apiToken = Cookies.get('token');
+
+    try {
+      const ticketResponse = await fetch(`${baseURL}/ticket`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ concertId, seatNumber }),
+      });
+
+      const ticketDetail = await ticketResponse.json();
+
+      return ticketDetail;
+    } catch ( error ) {
+      throw new Error(error.message);
+    }
   }
 }
 

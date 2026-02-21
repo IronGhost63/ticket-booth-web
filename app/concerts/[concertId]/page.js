@@ -2,10 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link";
-import Layout from "@/app/ui/layout/main";
 import { isLoggedIn } from "@/app/lib/api";
-import constant from "@/app/lib/constant";
+import Layout from "@/app/ui/layout/main";
 import API from "@/app/lib/api";
 
 export default function Page() {
@@ -22,6 +20,29 @@ export default function Page() {
       setSelectedSeat( 0 );
     } else {
       setSelectedSeat( Number(e.currentTarget.value) );
+    }
+  }
+
+  const handleTicketReserve = async () => {
+    const concertId = params.concertId;
+    const seatNumber = selectedSeat;
+
+    try {
+      const result = await API.reserveTicket(concertId, seatNumber);
+      const updatedDetail = API.getConcert(params.concertId);
+
+      updatedDetail.then(( data ) => {
+        const withSelect = [...data.availability].map((item) => {
+          item.selected = false;
+
+          return item;
+        });
+
+        setSeatAvailability(withSelect);
+        setSelectedSeat(0);
+      })
+    } catch ( error ) {
+      console.log(error.message)
     }
   }
 
@@ -60,7 +81,7 @@ export default function Page() {
               </div>
               <div className="seat-detail">
                 <h3 className="seat-number">{selectedSeat ? `Seat ${selectedSeat}` : 'Select a seat'} </h3>
-                <button className="seat-confirm button">Confirm seat</button>
+                <button className="seat-confirm button" onClick={handleTicketReserve} disabled={!selectedSeat}>Confirm seat</button>
               </div>
             </div>
           )}
