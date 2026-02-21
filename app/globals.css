@@ -7,4 +7,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Global styles */
 @import "./styles/base.css";
+@import "./styles/components.css";
+
+/* Component styles */
+@import "./styles/components/text-input.css";
+
+/* Page styles */
+@import "./styles/pages/login-screen.css";
