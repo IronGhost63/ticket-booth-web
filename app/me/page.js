@@ -1,6 +1,17 @@
-import Layout from "../ui/layout/main"
+"use client"
+
+import { useEffect } from "react";
+import { redirect, RedirectType } from "next/navigation";
+import { isLoggedIn } from "@/app/lib/api";
+import Layout from "@/app/ui/layout/main";
 
 export default function Page() {
+  useEffect(() => {
+    if ( !isLoggedIn() ) {
+      redirect("/signin", RedirectType.replace);
+    }
+  }, []);
+
   return (
     <Layout>
       <div className="flex min-h-screen items-center justify-centerfont-sans">

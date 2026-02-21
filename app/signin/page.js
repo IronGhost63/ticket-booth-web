@@ -20,7 +20,9 @@ export default function Page() {
     setPassword(e.target.value);
   }
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
     try {
       await API.login(email, password);
 
@@ -51,6 +53,7 @@ export default function Page() {
               <p className="ok-message">{success}</p>
             )}
           </div>
+          <form onSubmit={handleSignIn}>
           <div className="input-row">
             <p className="input-label">Email</p>
             <input className="text-input dark" type="email" onChange={handleEmailChange} value={email}/>
@@ -62,6 +65,7 @@ export default function Page() {
           <div className="input-row">
             <button className="button dark" onClick={handleSignIn}>Sign in</button>
           </div>
+          </form>
         </div>
       </div>
     </Layout>

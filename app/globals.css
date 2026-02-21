@@ -12,6 +12,7 @@
 @import "./styles/components.css";
 
 /* Component styles */
+@import "./styles/components/main-menu.css";
 @import "./styles/components/text-input.css";
 
 /* Page styles */
