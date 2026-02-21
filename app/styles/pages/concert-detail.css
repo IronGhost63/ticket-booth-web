@@ -1,0 +1,39 @@
+@layer components {
+  .concert-detail-screen {
+    .seat-reserve {
+      @apply flex flex-col-reverse md:flex-row gap-4 md:gap-8;
+    }
+
+    .seat-list-wrapper {
+      @apply shrink-0 grow-0 basis-3/4
+    }
+
+    .seat-list {
+      @apply grid grid-cols-20 gap-2;
+    }
+
+    .seat-select {
+      @apply block border border-gray-600 p-2;
+
+      &:disabled {
+        @apply border-gray-900;
+
+        .seat-icon {
+          @apply grayscale;
+        }
+      }
+
+      &.selected {
+        @apply border-gray-200;
+      }
+    }
+
+    .seat-detail {
+      @apply basis-1/4 shrink-0 grow-0;
+
+      .seat-number {
+        @apply text-center text-2xl mb-8;
+      }
+    }
+  }
+}

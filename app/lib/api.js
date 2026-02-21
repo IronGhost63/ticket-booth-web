@@ -65,11 +65,20 @@ const API = {
     };
 
     if ( isLoggedIn() ) {
-      const seatsResponse = await fetch(`${baseURL}/ticket/concert/${concertId}`);
+      const apiToken = Cookies.get('token');
+
+      const seatsResponse = await fetch(`${baseURL}/ticket/concert/${concertId}/availability`, {
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
+
       const availability = await seatsResponse.json();
 
       data.availability = availability;
     }
+
+    console.log(data);
 
     return data;
   }
