@@ -14,6 +14,9 @@
 /* Component styles */
 @import "./styles/components/main-menu.css";
 @import "./styles/components/text-input.css";
+@import "./styles/components/concert-card.css";
 
 /* Page styles */
+@import "./styles/pages/home.css";
 @import "./styles/pages/account.css";
+@import "./styles/pages/concert-listing.css";

@@ -1,14 +1,25 @@
 import Image from "next/image";
+import Link from "next/link";
 import Layout from "@/app/ui/layout/main";
+import heroImage from "@/public/home-hero.jpg";
 
 export default function Home() {
   return (
-    <Layout>
-      <div className="flex min-h-screen items-center justify-centerfont-sans">
-        <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-          <h1 className="text-5xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-[5rem]">Hello World</h1>
-        </main>
-      </div>
+    <Layout className="home-screen">
+      <main>
+        <div className="hero">
+          <div className="hero-background">
+            <Image src={heroImage} className="hero-image" alt=""/>
+          </div>
+          <div className="hero-content">
+            <div className="main-container">
+              <h1 className="title">Enjoy Singing Cats</h1>
+              <p className="description">A concert performed by cats is pure, joyful chaos—dramatic leaps, swishing tails, and bold “meow” solos. Some strut like superstars, others pounce on instruments as if they’re prey. It’s unpredictable, mischievous, and wildly entertaining from start to finish.</p>
+              <Link href="/concerts/1" className="button outlined dark">Get ticket!</Link>
+            </div>
+          </div>
+        </div>
+      </main>
     </Layout>
   );
 }

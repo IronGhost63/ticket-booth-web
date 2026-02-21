@@ -1,0 +1,35 @@
+@layer components {
+  .home-screen {
+    .hero {
+      @apply grid w-full;
+
+      .main-container {
+        @apply md:max-w-3xl;
+      }
+    }
+
+    .hero-image {
+      @apply object-center object-cover w-full max-h-screen;
+    }
+
+    .hero-background {
+      @apply col-start-1 row-start-1 w-full relative;
+
+      &::after {
+        @apply content-[''] absolute top-0 left-0 right-0 bottom-0 bg-black/30;
+      }
+    }
+
+    .hero-content {
+      @apply col-start-1 row-start-1 flex items-end w-full mb-25 relative z-10;
+
+      .title {
+        @apply text-4xl md:text-9xl mb-12;
+      }
+
+      .description {
+        @apply text-xl mb-8;
+      }
+    }
+  }
+}
