@@ -8,17 +8,17 @@ export default () => (
       <div className="menu-container">
         <div className="flex items-center justify-between h-14">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-lg font-medium text-white">TicketBooth</span>
+            <span className="brand">TicketBooth</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm text-white/80 hover:text-white transition-colors">
+          <nav className="navigation">
+            <Link href="/" className="link-item">
               Home
             </Link>
-            <Link href="/concerts" className="text-sm text-white/80 hover:text-white transition-colors">
+            <Link href="/concerts" className="link-item">
               Concerts
             </Link>
-            <Link href="/me" className="text-sm text-white/80 hover:text-white transition-colors">
+            <Link href="/me" className="link-item">
               {isLoggedIn() ? "My Account" : "Sign In"}
             </Link>
           </nav>
