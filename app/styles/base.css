@@ -2,4 +2,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  main {
+    @apply flex min-h-screen items-center justify-center font-sans;
+  }
 }

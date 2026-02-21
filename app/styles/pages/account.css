@@ -1,0 +1,14 @@
+@layer components {
+  .login-screen,
+  .logout-screen {
+    .main-container {
+      @apply md:max-w-1/5 mx-auto w-full p-4;
+    }
+  }
+
+  .account-screen {
+    .main-container {
+      @apply md:max-w-6xl mx-auto w-full p-4;
+    }
+  }
+}
