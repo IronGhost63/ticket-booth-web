@@ -30,7 +30,7 @@ const CreateConcert = () => {
           </div>
           <div className="field field-description">
             <label className="field-label">Description</label>
-            <textarea className="field-textarea" placeholder="Please input description" onChange={handleDescriptionChange}>{concertDescription}</textarea>
+            <textarea className="field-textarea" placeholder="Please input description" onChange={handleDescriptionChange} value={concertDescription} />
           </div>
           <div className="field field-action text-right">
             <button className="admin-button button save-concert"><ImFloppyDisk/> Save</button>
