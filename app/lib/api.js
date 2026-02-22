@@ -195,11 +195,35 @@ const API = {
   },
 
   async cancelTicket(ticketId) {
+    try {
+      const apiToken = Cookies.get('token');
+      const response = await fetch(`${baseURL}/${ticketId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
 
+      return await response.json();
+    } catch ( error ) {
+      throw new Error(error.message)
+    }
   },
 
-  async cancelAllTicket() {
+  async cancelAllTicket(concertId) {
+    try {
+      const apiToken = Cookies.get('token');
+      const response = await fetch(`${baseURL}/ticket/all/${concertId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
 
+      return await response.json();
+    } catch ( error ) {
+      throw new Error(error.message)
+    }
   },
 
   async deleteConcert( concertId ) {

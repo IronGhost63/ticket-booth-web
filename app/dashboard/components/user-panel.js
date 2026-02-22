@@ -18,14 +18,42 @@ const UserPanel = () => {
   }
 
   const getTicketsData = async () => {
-    const ticketsData = await API.getUserTickets();
+    const ticketsData = (await API.getUserTickets()).filter(item => item.status === 'active');
     const purchasedConcert = new Set( ticketsData.map(item => item.concertId) );
+
+    console.log(ticketsData);
 
     return [...purchasedConcert];
   }
 
   const handleCancelTicket = async (concertId) => {
+    try {
+      await API.cancelAllTicket(concertId);
 
+      getTicketsData().then((data) => {
+        setPurchased( data );
+      });;
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Your ticket is cancelled!
+          </p>
+        </div>
+      )
+      setConfirmModal(true);
+    } catch( error ) {
+      console.log(error.message);
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Unable to cancel this ticket!
+          </p>
+        </div>
+      );
+      setConfirmModal(true);
+    }
   }
 
   const handleReserveTicket = async (concertId) => {
@@ -81,10 +109,10 @@ const UserPanel = () => {
             <p className="concert-seats"><ImUser /> {item.totalSeats}</p>
             <p>
               {purchased.includes(item.id) && (
-                <button onClick={() => {setToDelete(item.id); setToDeleteName(item.name)}} className="admin-button cancel-concert button">Cancel</button>
+                <button onClick={() => {handleCancelTicket(item.id)}} className="admin-button cancel-concert button">Cancel ticket</button>
               )}
               {!purchased.includes(item.id) && (
-                <button onClick={() => {handleReserveTicket(item.id)}} className="admin-button reserve-concert button">Reserve</button>
+                <button onClick={() => {handleReserveTicket(item.id)}} className="admin-button reserve-concert button">Reserve ticket</button>
               )}
             </p>
           </div>

@@ -95,7 +95,7 @@
     }
 
     .dashboard-concert-item {
-      @apply p-10 rounded-lg border border-silver mb-12;
+      @apply p-4 md:p-10 rounded-lg border border-silver mb-6 md:mb-12;
 
       .concert-name {
         @apply font-semibold text-[32px] text-dodger-blue border-b border-silver mb-6 pb-6 leading-[100%];
