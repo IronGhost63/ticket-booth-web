@@ -21,8 +21,6 @@ const UserPanel = () => {
     const ticketsData = (await API.getUserTickets()).filter(item => item.status === 'active');
     const purchasedConcert = new Set( ticketsData.map(item => item.concertId) );
 
-    console.log(ticketsData);
-
     return [...purchasedConcert];
   }
 
