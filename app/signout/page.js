@@ -1,7 +1,15 @@
+"use client"
+
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import Layout from "@/app/ui/layout/blank";
 
 export default function Page() {
+  useEffect(() => {
+    Cookies.remove('token');
+  }, []);
+
   return (
     <Layout className="logout-screen">
       <main>

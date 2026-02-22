@@ -3,7 +3,28 @@ import constant from "./constant";
 
 const baseURL = constant.API_URL;
 
+const validateToken = async () => {
+  const token = Cookies.get("token");
+
+  try {
+    const response = await fetch(`${baseURL}/auth/validate`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    });
+
+    if ( !response.ok ) {
+      Cookies.remove('token');
+    }
+  } catch ( error ) {
+    Cookies.remove('token');
+  }
+}
+
 export const isLoggedIn = () => {
+  validateToken();
+
   const token = Cookies.get("token");
 
   return !!token;
@@ -25,7 +46,13 @@ const API = {
       throw new Error(data.message);
     }
 
-    Cookies.set("token", data.accessToken, { secure: true });
+    const now = new Date();
+    const expiration = new Date(now.getTime() + data.tokenExpire);
+
+    Cookies.set("token", data.accessToken, {
+      secure: true,
+      expires: expiration
+    });
 
     return data;
   },
