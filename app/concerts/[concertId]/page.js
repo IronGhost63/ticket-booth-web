@@ -32,7 +32,7 @@ export default function Page() {
     const seatNumber = selectedSeat;
 
     try {
-      const result = await API.reserveTicket(concertId, seatNumber);
+      await API.reserveTicket(concertId, seatNumber);
       const updatedDetail = API.getConcert(params.concertId);
 
       updatedDetail.then(( data ) => {
