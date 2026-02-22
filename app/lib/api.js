@@ -2,10 +2,15 @@ import Cookies from "js-cookie";
 import constant from "./constant";
 
 const baseURL = constant.API_URL;
-const apiToken = Cookies.get('token');
 
 const validateToken = async () => {
   try {
+    const apiToken = Cookies.get('token');
+
+    if ( !apiToken ) {
+      return;
+    }
+
     const response = await fetch(`${baseURL}/auth/validate`, {
       method: 'POST',
       headers: {
@@ -13,13 +18,9 @@ const validateToken = async () => {
       }
     });
 
-    if ( !response.ok ) {
-      Cookies.remove('token');
-    } else {
-      const result = await response.json();
+    const result = await response.json();
 
-      Cookies.set('role', result.role);
-    }
+    Cookies.set('role', result.role);
   } catch ( error ) {
     Cookies.remove('token');
     Cookies.remove('role');
@@ -88,7 +89,27 @@ const API = {
   },
 
   async createConcert(name, description, totalSeats, date, cover) {
+    try {
+      const apiToken = Cookies.get('token');
+      const formData = new FormData();
 
+      formData.append('name', name);
+      formData.append('description', description);
+      formData.append('totalSeats', totalSeats);
+      formData.append('date', date);
+
+      const response = await fetch(`${baseURL}/concert`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`,
+        },
+        body: formData
+      });
+
+      return await response.json();
+    } catch( error ) {
+      throw new Error(error.message);
+    }
   },
 
   async getAllConcerts() {
@@ -99,6 +120,7 @@ const API = {
   },
 
   async getConcert( concertId ) {
+    const apiToken = Cookies.get('token');
     const concertResponse = await fetch(`${baseURL}/concert/${concertId}`);
     const detail = await concertResponse.json();
 
@@ -124,6 +146,7 @@ const API = {
 
   async reserveTicket( concertId, seatNumber ) {
     try {
+      const apiToken = Cookies.get('token');
       const ticketResponse = await fetch(`${baseURL}/ticket`, {
         method: 'POST',
         headers: {
@@ -143,6 +166,7 @@ const API = {
 
   async getUserTickets() {
     try {
+      const apiToken = Cookies.get('token');
       const response = await fetch(`${baseURL}/ticket`, {
         headers: {
           'Authorization': `Bearer ${apiToken}`
@@ -157,6 +181,7 @@ const API = {
 
   async getStats() {
     try {
+      const apiToken = Cookies.get('token');
       const response = await fetch(`${baseURL}/stats`, {
         headers: {
           'Authorization': `Bearer ${apiToken}`
@@ -179,6 +204,7 @@ const API = {
 
   async deleteConcert( concertId ) {
     try {
+      const apiToken = Cookies.get('token');
       const response = await fetch(`${baseURL}/concert/${concertId}`, {
         method: 'DELETE',
         headers: {

@@ -128,8 +128,7 @@
         @apply block;
       }
 
-      .field-description,
-      .field-action {
+      .field-wide {
         @apply md:col-span-2;
       }
 
