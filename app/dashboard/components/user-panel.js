@@ -8,6 +8,8 @@ import Modal from "@/app/ui/modal";
 const UserPanel = () => {
   const [concerts, setConcerts] = useState([]);
   const [purchased, setPurchased] = useState([]);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState(<></>);
 
   const getConcertsData = async () => {
     const concertsData = await API.getAllConcerts();
@@ -22,12 +24,38 @@ const UserPanel = () => {
     return [...purchasedConcert];
   }
 
-  const handleCancelTicket = () => {
+  const handleCancelTicket = async (concertId) => {
 
   }
 
-  const handleReserveTicket = () => {
+  const handleReserveTicket = async (concertId) => {
+    try {
+      await API.reserveTicket(concertId);
 
+      getTicketsData().then((data) => {
+        setPurchased( data );
+      });;
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Your ticket is reserved!
+          </p>
+        </div>
+      )
+      setConfirmModal(true);
+    } catch( error ) {
+      console.log(error.message);
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Unable to reserve this ticket!
+          </p>
+        </div>
+      );
+      setConfirmModal(true);
+    }
   }
 
   useEffect(() => {
@@ -56,12 +84,15 @@ const UserPanel = () => {
                 <button onClick={() => {setToDelete(item.id); setToDeleteName(item.name)}} className="admin-button cancel-concert button">Cancel</button>
               )}
               {!purchased.includes(item.id) && (
-                <button onClick={() => {setToDelete(item.id); setToDeleteName(item.name)}} className="admin-button reserve-concert button">Reserve</button>
+                <button onClick={() => {handleReserveTicket(item.id)}} className="admin-button reserve-concert button">Reserve</button>
               )}
             </p>
           </div>
         </div>
       ))}
+      <Modal modalState={confirmModal} closeLabel='OK' closeHandler={() => setConfirmModal(false)}>
+        {modalMessage}
+      </Modal>
     </div>
   )
 }
