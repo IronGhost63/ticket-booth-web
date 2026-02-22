@@ -19,7 +19,7 @@
     }
 
     .dashboard-menu-link {
-      @apply flex hover:bg-aqua-spring px-2 py-4 items-center rounded-[8px] text-[20px] leading-9;
+      @apply flex hover:bg-aqua-spring px-2 py-4 items-center rounded-lg text-[20px] leading-9;
 
       &.active {
         @apply bg-aqua-spring;
@@ -34,12 +34,12 @@
       @apply px-10 py-15 w-full;
     }
 
-    .stats-block {
-      @apply grid grid-cols-1 md:grid-cols-3 gap-8.75 w-full max-w-300;
+    .stats-blocks {
+      @apply grid grid-cols-1 md:grid-cols-3 gap-8.75 w-full max-w-300 mb-12;
     }
 
     .stats-block-item {
-      @apply text-white text-center p-6 rounded-[8px];
+      @apply text-white text-center p-6 rounded-lg;
 
       svg {
         @apply mx-auto w-10 h-10;
@@ -55,6 +55,51 @@
 
       .stat-number {
         @apply text-[60px] leading-[150%];
+      }
+    }
+
+    .manage-concerts-menu {
+      @apply flex mb-5.5;
+
+      .menu-button {
+        @apply cursor-pointer text-scorpion hover:text-dodger-blue font-semibold text-[24px] px-4 py-2.5;
+
+        &.active {
+          @apply border-b-2 border-dodger-blue text-dodger-blue;
+        }
+      }
+    }
+
+    .manage-concerts {
+      @apply max-w-300;
+    }
+
+    .dashboard-concert-item {
+      @apply p-10 rounded-lg border border-silver mb-12;
+
+      .concert-name {
+        @apply font-semibold text-[32px] text-dodger-blue border-b border-silver mb-6 pb-6 leading-[100%];
+      }
+
+      .concert-description {
+        @apply text-[24px] leading-9 mb-8;
+      }
+
+      .concert-action {
+        @apply flex justify-between items-center
+      }
+
+      .concert-seats,
+      .delete-concert {
+        @apply flex items-center text-[24px] leading-9;
+
+        svg {
+          @apply mr-2;
+        }
+      }
+
+      .delete-concert {
+        @apply inline-flex items-center bg-carnation text-white border-0 rounded-lg  font-medium py-3;
       }
     }
   }

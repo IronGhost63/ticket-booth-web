@@ -19,7 +19,7 @@ const Stats = () => {
   }, []);
 
   return (
-    <div className="stats-block">
+    <div className="stats-blocks">
       <div className="stats-block-item bg-allports">
         <p className="stat-icon"><ImUser /></p>
         <p className="stat-label">Total seats</p>

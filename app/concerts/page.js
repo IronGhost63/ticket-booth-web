@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Layout from "../ui/layout/main";
 import ConcertCard from "../ui/concertCard";
 import API from "../lib/api";
