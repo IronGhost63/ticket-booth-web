@@ -26,9 +26,9 @@ export default function Page() {
         <div className="main-container">
           <h1 className="text-5xl font-medium text-center mb-6">My Account</h1>
           <ul className="user-menu">
-            <li className="user-menu-item">
+            {/* <li className="user-menu-item">
               <button className="user-menu-button button outlined dark" onClick={() => setView('profile')}>Profile</button>
-            </li>
+            </li> */}
             <li className="user-menu-item">
               <button className="user-menu-button button outlined dark" onClick={() => setView('tickets')}>Tickets</button>
             </li>
