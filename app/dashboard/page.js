@@ -6,6 +6,7 @@ import Layout from "@/app/ui/layout/dashboard";
 import Stats from "./components/stats";
 import ListConcert from "./components/list-concert";
 import CreateConcert from "./components/create-concert";
+import UserPanel from "@/app/dashboard/components/user-panel";
 import { isLoggedIn, isAdmin } from "../lib/api";
 
 export default function Page() {
@@ -41,6 +42,9 @@ export default function Page() {
             )}
           </div>
         </div>
+      )}
+      {!isAdminUser && (
+        <UserPanel />
       )}
     </Layout>
   );

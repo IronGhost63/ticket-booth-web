@@ -10,7 +10,7 @@ export default function Layout ({children, className, isAdmin}) {
   return (
     <div className={`dashboard-layout ${className || ""}`}>
       <div className="dashboard-sidebar">
-        <h1 className="sidebar-title">Admin</h1>
+        <h1 className="sidebar-title">{isAdmin ? 'Admin' : 'User'}</h1>
         <ul className="dashboard-menu">
           {isAdmin && (
           <li className="dashboard-menu-item">
@@ -29,7 +29,7 @@ export default function Layout ({children, className, isAdmin}) {
           {isAdmin && (
             <li className="dashboard-menu-item">
               <Link href="/dashboard/switch" className="dashboard-menu-link">
-                <span className="icon"><ImLoop2/></span> <span className="label">Switch user</span>
+                <span className="icon"><ImLoop2/></span> <span className="label">User Panel</span>
               </Link>
             </li>
           )}

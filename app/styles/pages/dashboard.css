@@ -79,6 +79,8 @@
     }
 
     .dashboard-list-concert {
+      @apply max-w-300;
+
       .confirm-message {
         @apply text-center font-bold text-[20px] leading-8;
 
@@ -118,6 +120,14 @@
 
       .delete-concert {
         @apply bg-carnation;
+      }
+
+      .cancel-concert {
+        @apply bg-carnation;
+      }
+
+      .reserve-concert {
+        @apply bg-dodger-blue;
       }
     }
 

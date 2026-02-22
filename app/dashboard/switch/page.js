@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Layout from "@/app/ui/layout/dashboard";
+import UserPanel from "@/app/dashboard/components/user-panel";
 import { isLoggedIn, isAdmin } from "@/app/lib/api";
 
 export default function Page() {
@@ -17,7 +18,7 @@ export default function Page() {
 
   return (
     <Layout className="dashboard" isAdmin={isAdminUser}>
-      Hello World
+      <UserPanel />
     </Layout>
   );
 }
