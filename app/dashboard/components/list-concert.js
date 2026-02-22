@@ -10,9 +10,23 @@ const ListConcert = () => {
   const [toDelete, setToDelete] = useState(0);
   const [toDeleteName, setToDeleteName] = useState('');
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const [resultMessage, setResultMessage] = useState('');
+  const [resultDialogOpen, setResultDialogOpen] = useState(false);
 
   const handleDeleteConcert = async () => {
+    setConfirmDialogOpen(false);
 
+    try {
+      const result = await API.deleteConcert(toDelete);
+      setResultMessage(result.message);
+
+      const updatedList = await getConcertsData();
+      setConcerts( updatedList );
+    } catch( error ) {
+      setResultMessage(error.message);
+    }
+
+    setResultDialogOpen(true);
   }
 
   const getConcertsData = async () => {
@@ -58,6 +72,11 @@ const ListConcert = () => {
         <div className="confirm-message">
           <p className="icon"><ImNotification /></p>
           <p>Are you sure to delete "{toDeleteName}"?</p>
+        </div>
+      </Modal>
+      <Modal modalState={resultDialogOpen} closeLabel="OK" closeHandler={() => setResultDialogOpen(false)}>
+        <div className="confirm-message">
+          <p>{resultMessage}</p>
         </div>
       </Modal>
     </div>

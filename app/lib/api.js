@@ -178,14 +178,18 @@ const API = {
   },
 
   async deleteConcert( concertId ) {
-    const response = await fetch(`${baseURL}/concert/${concertId}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
+    try {
+      const response = await fetch(`${baseURL}/concert/${concertId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
 
-    const data = await response.json();
+      return await response.json();
+    } catch ( error ) {
+      throw new Error(error.message)
+    }
   }
 }
 
