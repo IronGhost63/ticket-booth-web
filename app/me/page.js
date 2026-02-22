@@ -32,11 +32,9 @@ export default function Page() {
             <li className="user-menu-item">
               <button className="user-menu-button button outlined dark" onClick={() => setView('tickets')}>Tickets</button>
             </li>
-            {isAdminUser && (
-              <li className="user-menu-item">
-                <Link href="/dashboard" className="user-menu-button button outlined dark">Admin</Link>
-              </li>
-            )}
+            <li className="user-menu-item">
+              <Link href="/dashboard" className="user-menu-button button outlined dark">Dashboard</Link>
+            </li>
             <li className="user-menu-item">
               <Link href="/signout" className="user-menu-button button outlined dark">Sign out</Link>
             </li>

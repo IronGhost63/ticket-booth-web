@@ -1,0 +1,43 @@
+@layer components {
+  .dashboard {
+    @apply font-roboto flex min-h-screen;
+
+    .dashboard-sidebar {
+      @apply py-10 border-r border-mercury bg-white w-60;
+    }
+
+    .sidebar-title {
+      @apply font-semibold text-[40px] leading-[150%] px-6;
+    }
+
+    .dashboard-menu {
+      @apply flex flex-col justify-start h-9/10;
+    }
+
+    .dashboard-menu-item {
+      @apply p-2;
+    }
+
+    .dashboard-menu-link {
+      @apply flex hover:bg-aqua-spring px-2 py-4 items-center rounded-xl text-[20px] leading-9;
+
+      &.active {
+        @apply bg-aqua-spring;
+      }
+
+      .icon {
+        @apply w-6 mr-2;
+      }
+    }
+
+    .dashboard-content {
+      @apply px-10 py-15;
+    }
+  }
+}
+
+@layer utilities {
+  body:has(.dashboard) {
+    @apply bg-alabaster text-black;
+  }
+}
