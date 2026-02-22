@@ -87,6 +87,10 @@ const API = {
     return data;
   },
 
+  async createConcert() {
+
+  },
+
   async getAllConcerts() {
     const response = await fetch(`${baseURL}/concert`);
     const data = await response.json();
