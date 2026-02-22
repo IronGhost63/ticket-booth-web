@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-const Modal = ({children, className, modalState, closeHandler}) => {
+const Modal = ({children, className, modalState, closeHandler, actionHandler, closeLabel, actionLabel}) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -16,7 +16,12 @@ const Modal = ({children, className, modalState, closeHandler}) => {
         {children}
       </div>
       <div className="modal-control">
-        <button className="button" onClick={closeHandler}>OK</button>
+        {closeHandler && (
+          <button className="button" onClick={closeHandler}>{closeLabel}</button>
+        )}
+        {actionHandler && (
+          <button className="button" onClick={actionHandler}>{actionLabel}</button>
+        )}
       </div>
     </dialog>
   );

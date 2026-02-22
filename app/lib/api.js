@@ -163,6 +163,18 @@ const API = {
     } catch( error ) {
       throw new Error(error.message)
     }
+  },
+
+  async cancelTicket(ticketId) {
+
+  },
+
+  async cancelAllTicket() {
+
+  },
+
+  async deleteConcert( concertId ) {
+
   }
 }
 

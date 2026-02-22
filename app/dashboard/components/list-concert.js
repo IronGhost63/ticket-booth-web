@@ -24,14 +24,14 @@ const ListConcert = () => {
   }, []);
   return(
     <div className="dashboard-list-concert">
-      {concerts.map( item => (
-        <div className="dashboard-concert-item">
+      {concerts.map( (item, index) => (
+        <div className="dashboard-concert-item" key={`concert-${index}-${item.id}`}>
           <h3 className="concert-name">{item.name}</h3>
           <div className="concert-description">{item.description}</div>
           <div className="concert-action">
             <p className="concert-seats"><ImUser /> {item.totalSeats}</p>
             <p>
-              <button className="delete-concert button"><ImBin /> Delete</button>
+              <button className="admin-button delete-concert button"><ImBin /> Delete</button>
             </p>
           </div>
         </div>

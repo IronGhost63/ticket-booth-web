@@ -115,7 +115,7 @@ export default function Page() {
             </div>
           )}
           {userLoggedIn && (
-            <Modal modalState={confirmModal} closeHandler={() => setConfirmModal(false)}>
+            <Modal modalState={confirmModal} closeLabel='OK' closeHandler={() => setConfirmModal(false)}>
               {modalMessage}
             </Modal>
           )}

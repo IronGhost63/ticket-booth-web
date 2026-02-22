@@ -15,10 +15,10 @@ export default function Page() {
       <div className="manage-concerts">
         <ul className="manage-concerts-menu">
           <li className="menu-item">
-            <buttom className={`menu-button ${view === 'list' ? 'active' : ''}`} onClick={() => setView('list')}>Overview</buttom>
+            <button className={`menu-button ${view === 'list' ? 'active' : ''}`} onClick={() => setView('list')}>Overview</button>
           </li>
           <li className="menu-item">
-            <buttom className={`menu-button ${view === 'create' ? 'active' : ''}`} onClick={() => setView('create')}>Create</buttom>
+            <button className={`menu-button ${view === 'create' ? 'active' : ''}`} onClick={() => setView('create')}>Create</button>
           </li>
         </ul>
         {view === 'list' && (

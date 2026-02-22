@@ -46,4 +46,12 @@
       }
     }
   }
+
+  .admin-button {
+    @apply text-[24px] leading-9 inline-flex items-center text-white border-0 rounded-lg font-medium py-3 w-auto;
+
+    svg {
+      @apply mr-2;
+    }
+  }
 }

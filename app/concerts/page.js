@@ -29,8 +29,8 @@ export default function Page() {
         <div className="main-container">
           <h1 className="page-title text-center">Concerts</h1>
           <ul className="concert-list">
-            {concerts.map( (item ) => (
-              <li>
+            {concerts.map( (item, index ) => (
+              <li key={`concert-${index}-${item.id}`}>
                 <ConcertCard data={item} />
               </li>
             ))}
