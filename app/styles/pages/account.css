@@ -15,4 +15,36 @@
   .user-menu {
     @apply flex gap-3 justify-center;
   }
+
+  .profile-view {
+    @apply max-w-90 mx-auto
+  }
+
+  .tickets-view {
+    @apply max-w-240 py-20 mx-auto;
+
+    .concert-tickets-list {
+      @apply grid md:grid-cols-2 gap-6;
+    }
+
+    .concert-tickets-item {
+      @apply rounded-[20px] p-5 bg-white text-black flex justify-between items-center;
+    }
+
+    .concert-name {
+      @apply text-3xl mb-0;
+    }
+
+    .concert-date {
+      @apply text-lg text-gray-500 mb-8;
+    }
+
+    .concert-tickets {
+      @apply mb-12
+    }
+
+    .concert-ticket-seat {
+      @apply text-xl
+    }
+  }
 }

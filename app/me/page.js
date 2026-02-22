@@ -5,6 +5,8 @@ import { redirect, RedirectType } from "next/navigation";
 import { isLoggedIn, isAdmin } from "@/app/lib/api";
 import Link from "next/link";
 import Layout from "@/app/ui/layout/main";
+import ProfileView from "./components/profile-view";
+import TicketsView from "./components/tickets-view";
 
 export default function Page() {
   const [view, setView] = useState('profile');
@@ -41,14 +43,10 @@ export default function Page() {
           </ul>
           <div className="content">
             {view === 'profile' && (
-              <div>
-                Profile view
-              </div>
+              <ProfileView />
             )}
             {view === 'tickets' && (
-              <div>
-                Tickets view
-              </div>
+              <TicketsView />
             )}
           </div>
         </div>

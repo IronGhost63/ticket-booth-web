@@ -2,15 +2,14 @@ import Cookies from "js-cookie";
 import constant from "./constant";
 
 const baseURL = constant.API_URL;
+const apiToken = Cookies.get('token');
 
 const validateToken = async () => {
-  const token = Cookies.get("token");
-
   try {
     const response = await fetch(`${baseURL}/auth/validate`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${apiToken}`,
       }
     });
 
@@ -18,8 +17,6 @@ const validateToken = async () => {
       Cookies.remove('token');
     } else {
       const result = await response.json();
-
-      console.log(result);
 
       Cookies.set('role', result.role);
     }
@@ -105,8 +102,6 @@ const API = {
     };
 
     if ( isLoggedIn() ) {
-      const apiToken = Cookies.get('token');
-
       const seatsResponse = await fetch(`${baseURL}/ticket/concert/${concertId}/availability`, {
         headers: {
           'Authorization': `Bearer ${apiToken}`
@@ -122,8 +117,6 @@ const API = {
   },
 
   async reserveTicket( concertId, seatNumber ) {
-    const apiToken = Cookies.get('token');
-
     try {
       const ticketResponse = await fetch(`${baseURL}/ticket`, {
         method: 'POST',
@@ -139,6 +132,20 @@ const API = {
       return ticketDetail;
     } catch ( error ) {
       throw new Error(error.message);
+    }
+  },
+
+  async getUserTickets() {
+    try {
+      const response = await fetch(`${baseURL}/ticket`, {
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
+
+      return response.json();
+    } catch( error ) {
+      throw new Error(error.message)
     }
   }
 }
