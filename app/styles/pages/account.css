@@ -11,4 +11,8 @@
       @apply md:max-w-6xl mx-auto w-full p-4;
     }
   }
+
+  .user-menu {
+    @apply flex gap-3 justify-center;
+  }
 }
