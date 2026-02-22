@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ImHome, ImDrawer, ImShuffle, ImExit } from "react-icons/im";
+import { ImHome, ImDrawer, ImLoop2, ImExit } from "react-icons/im";
 
 export default function Layout ({children, className}) {
   const pathName = usePathname();
@@ -24,7 +24,7 @@ export default function Layout ({children, className}) {
           </li>
           <li className="dashboard-menu-item">
             <Link href="/dashboard/switch" className="dashboard-menu-link">
-              <span className="icon"><ImShuffle/></span> <span className="label">Switch user</span>
+              <span className="icon"><ImLoop2/></span> <span className="label">Switch user</span>
             </Link>
           </li>
           <li className="dashboard-menu-item mt-auto">

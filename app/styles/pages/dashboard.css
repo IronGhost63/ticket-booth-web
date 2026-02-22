@@ -19,7 +19,7 @@
     }
 
     .dashboard-menu-link {
-      @apply flex hover:bg-aqua-spring px-2 py-4 items-center rounded-xl text-[20px] leading-9;
+      @apply flex hover:bg-aqua-spring px-2 py-4 items-center rounded-[8px] text-[20px] leading-9;
 
       &.active {
         @apply bg-aqua-spring;
@@ -31,7 +31,31 @@
     }
 
     .dashboard-content {
-      @apply px-10 py-15;
+      @apply px-10 py-15 w-full;
+    }
+
+    .stats-block {
+      @apply grid grid-cols-1 md:grid-cols-3 gap-8.75 w-full max-w-300;
+    }
+
+    .stats-block-item {
+      @apply text-white text-center p-6 rounded-[8px];
+
+      svg {
+        @apply mx-auto w-10 h-10;
+      }
+
+      .stat-icon {
+        @apply mb-2.5;
+      }
+
+      .stat-label {
+        @apply text-[24px] leading-9 mb-2.5;
+      }
+
+      .stat-number {
+        @apply text-[60px] leading-[150%];
+      }
     }
   }
 }

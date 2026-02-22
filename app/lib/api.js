@@ -35,6 +35,8 @@ export const isLoggedIn = () => {
 }
 
 export const isAdmin = () => {
+  validateToken();
+
   const role = Cookies.get('role');
 
   return (role === 'admin');
@@ -138,6 +140,20 @@ const API = {
   async getUserTickets() {
     try {
       const response = await fetch(`${baseURL}/ticket`, {
+        headers: {
+          'Authorization': `Bearer ${apiToken}`
+        }
+      });
+
+      return response.json();
+    } catch( error ) {
+      throw new Error(error.message)
+    }
+  },
+
+  async getStats() {
+    try {
+      const response = await fetch(`${baseURL}/stats`, {
         headers: {
           'Authorization': `Bearer ${apiToken}`
         }
