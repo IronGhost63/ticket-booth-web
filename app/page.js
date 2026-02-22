@@ -15,7 +15,7 @@ export default function Home() {
             <div className="main-container">
               <h1 className="title">Enjoy Singing Cats</h1>
               <p className="description">A concert performed by cats is pure, joyful chaos—dramatic leaps, swishing tails, and bold “meow” solos. Some strut like superstars, others pounce on instruments as if they’re prey. It’s unpredictable, mischievous, and wildly entertaining from start to finish.</p>
-              <Link href="/concerts/1" className="button outlined dark">Get ticket!</Link>
+              <Link href="/concerts/1" className="button outlined dark w-auto">Get ticket!</Link>
             </div>
           </div>
         </div>

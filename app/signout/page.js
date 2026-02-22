@@ -8,6 +8,7 @@ import Layout from "@/app/ui/layout/blank";
 export default function Page() {
   useEffect(() => {
     Cookies.remove('token');
+    Cookies.remove('role');
   }, []);
 
   return (

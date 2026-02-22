@@ -16,18 +16,31 @@ const validateToken = async () => {
 
     if ( !response.ok ) {
       Cookies.remove('token');
+    } else {
+      const result = await response.json();
+
+      console.log(result);
+
+      Cookies.set('role', result.role);
     }
   } catch ( error ) {
     Cookies.remove('token');
+    Cookies.remove('role');
   }
 }
 
 export const isLoggedIn = () => {
   validateToken();
 
-  const token = Cookies.get("token");
+  const token = Cookies.get('token');
 
   return !!token;
+}
+
+export const isAdmin = () => {
+  const role = Cookies.get('role');
+
+  return (role === 'admin');
 }
 
 const API = {
