@@ -15,6 +15,7 @@
 @import "./styles/components/main-menu.css";
 @import "./styles/components/text-input.css";
 @import "./styles/components/concert-card.css";
+@import "./styles/components/modal.css";
 
 /* Page styles */
 @import "./styles/pages/home.css";

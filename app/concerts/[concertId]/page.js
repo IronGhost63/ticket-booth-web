@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { isLoggedIn } from "@/app/lib/api";
+import Link from "next/link";
 import Layout from "@/app/ui/layout/main";
+import Modal from "@/app/ui/modal";
 import API from "@/app/lib/api";
 
 export default function Page() {
@@ -11,6 +13,8 @@ export default function Page() {
   const [concertDetail, setConcertDetail] = useState({});
   const [seatAvailability, setSeatAvailability] = useState([]);
   const [selectedSeat, setSelectedSeat] = useState(0);
+  const [purchaseModal, setPurchaseModal] = useState(false);
+  const [lastPurchased, setLastPurchased] = useState(0);
   const params = useParams();
 
   const handleSelectSeat = (e) => {
@@ -39,7 +43,9 @@ export default function Page() {
         });
 
         setSeatAvailability(withSelect);
+        setLastPurchased(selectedSeat)
         setSelectedSeat(0);
+        setPurchaseModal(true);
       })
     } catch ( error ) {
       console.log(error.message)
@@ -89,6 +95,18 @@ export default function Page() {
                 <button className="seat-confirm button" onClick={handleTicketReserve} disabled={!selectedSeat}>Confirm seat</button>
               </div>
             </div>
+          )}
+          {userLoggedIn && (
+            <Modal modalState={purchaseModal} closeHandler={() => setPurchaseModal(false)}>
+              <div className="text-center text-xl">
+                <p className="mb-4">
+                  Your ticket for seat number {lastPurchased} in event "{concertDetail.name}" is reserved!
+                </p>
+                <p>
+                  <Link href="/me" className="hover:underline">Click here</Link> to view your ticket
+                </p>
+              </div>
+            </Modal>
           )}
         </div>
       </main>

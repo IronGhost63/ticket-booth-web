@@ -1,0 +1,13 @@
+@layer components {
+  .modal {
+    @apply p-5 rounded-[20px] max-w-9/10 w-120 fixed top-1/2 left-1/2 -translate-1/2;
+
+    .modal-content {
+      @apply mb-8
+    }
+
+    &::backdrop {
+      @apply bg-black/60;
+    }
+  }
+}
