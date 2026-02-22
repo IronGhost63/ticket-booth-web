@@ -33,3 +33,9 @@
     }
   }
 }
+
+@layer utilities {
+  .home-screen main {
+    @apply pt-12
+  }
+}
