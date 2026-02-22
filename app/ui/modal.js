@@ -17,10 +17,10 @@ const Modal = ({children, className, modalState, closeHandler, actionHandler, cl
       </div>
       <div className="modal-control">
         {closeHandler && (
-          <button className="button" onClick={closeHandler}>{closeLabel}</button>
+          <button className="button dismiss-button" onClick={closeHandler}>{closeLabel}</button>
         )}
         {actionHandler && (
-          <button className="button" onClick={actionHandler}>{actionLabel}</button>
+          <button className="button action-button" onClick={actionHandler}>{actionLabel}</button>
         )}
       </div>
     </dialog>

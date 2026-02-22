@@ -87,7 +87,7 @@ const API = {
     return data;
   },
 
-  async createConcert() {
+  async createConcert(name, description, totalSeats, date, cover) {
 
   },
 
@@ -178,7 +178,14 @@ const API = {
   },
 
   async deleteConcert( concertId ) {
+    const response = await fetch(`${baseURL}/concert/${concertId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
 
+    const data = await response.json();
   }
 }
 

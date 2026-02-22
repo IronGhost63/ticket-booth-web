@@ -9,5 +9,17 @@
     &::backdrop {
       @apply bg-black/60;
     }
+
+    .modal-control {
+      @apply flex gap-4;
+    }
+
+    .button {
+      @apply inline-block rounded-sm;
+
+      &.dismiss-button {
+        @apply bg-white border-gray-300 text-black;
+      }
+    }
   }
 }

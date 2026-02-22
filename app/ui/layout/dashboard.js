@@ -27,7 +27,7 @@ export default function Layout ({children, className}) {
               <span className="icon"><ImLoop2/></span> <span className="label">Switch user</span>
             </Link>
           </li>
-          <li className="dashboard-menu-item mt-auto">
+          <li className="dashboard-menu-item md:mt-auto">
             <Link href="/signout" className="dashboard-menu-link">
               <span className="icon"><ImExit/></span> <span className="label">Logout</span>
             </Link>
