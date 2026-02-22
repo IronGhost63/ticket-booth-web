@@ -197,7 +197,7 @@ const API = {
   async cancelTicket(ticketId) {
     try {
       const apiToken = Cookies.get('token');
-      const response = await fetch(`${baseURL}/${ticketId}`, {
+      const response = await fetch(`${baseURL}/ticket/${ticketId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${apiToken}`

@@ -1,9 +1,40 @@
 import { useState, useEffect } from 'react';
 import API from "@/app/lib/api";
+import Modal from "@/app/ui/modal";
 
 const TicketsView = () => {
   const [concerts, setConcerts] = useState([]);
   const [tickets, setTickets] = useState([]);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState(<></>);
+
+  const handleCancelTicket = async (ticketId) => {
+    try {
+      await API.cancelTicket(ticketId);
+
+      API.getUserTickets().then(data => setTickets(data));
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Your ticket is cancelled!
+          </p>
+        </div>
+      )
+      setConfirmModal(true);
+    } catch( error ) {
+      console.log(error.message);
+
+      setModalMessage(
+        <div className="text-center text-xl">
+          <p className="mb-4">
+            Unable to cancel this ticket!
+          </p>
+        </div>
+      );
+      setConfirmModal(true);
+    }
+  }
 
   useEffect(() => {
     API.getUserTickets().then(data => setTickets(data));
@@ -45,13 +76,21 @@ const TicketsView = () => {
               <li className="concert-tickets-item">
                 <div className="concert-ticket-seat">Seat {ticket.seatNumber}</div>
                 <div className="concert-ticket-action">
-                  <button className="concert-ticket-cancel button">Cancel this ticket</button>
+                  {ticket.status === 'active' && (
+                    <button onClick={() => {handleCancelTicket(ticket.id)}} className="concert-ticket-cancel button">Cancel this ticket</button>
+                  )}
+                  {ticket.status !== 'active' && (
+                    <p>Cancelled</p>
+                  )}
                 </div>
               </li>
             ))}
           </ul>
         </div>
       ))}
+      <Modal modalState={confirmModal} closeLabel='OK' closeHandler={() => setConfirmModal(false)}>
+        {modalMessage}
+      </Modal>
     </div>
   );
 }
